@@ -27,7 +27,7 @@ async function fr24fetch(url) {
 // Прокси: прилёты
 app.get('/api/arrivals', async (req, res) => {
   try {
-    const data = await fr24fetch('https://fr24api.flightradar24.com/api/live/flight-positions/light?airports=HRG&categories=P&limit=30');
+    const data = await fr24fetch('https://fr24api.flightradar24.com/api/static/airports/HRG/arrivals');
     res.json(data);
   } catch (err) {
     console.error('Arrivals error:', err.message);
@@ -38,7 +38,7 @@ app.get('/api/arrivals', async (req, res) => {
 // Прокси: вылеты
 app.get('/api/departures', async (req, res) => {
   try {
-    const data = await fr24fetch('https://fr24api.flightradar24.com/api/live/flight-positions/light?airports=HRG&categories=P&limit=30');
+    const data = await fr24fetch('https://fr24api.flightradar24.com/api/static/airports/HRG/departures');
     res.json(data);
   } catch (err) {
     console.error('Departures error:', err.message);
@@ -46,9 +46,9 @@ app.get('/api/departures', async (req, res) => {
   }
 });
 
-// Тестовый endpoint — смотрим сырой ответ FR24
+// Тестовый endpoint
 app.get('/api/test', async (req, res) => {
-  const data = await fr24fetch('https://fr24api.flightradar24.com/api/live/flight-positions/light?airports=HRG&limit=10');
+  const data = await fr24fetch('https://fr24api.flightradar24.com/api/static/airports/HRG/arrivals');
   res.json(data);
 });
 
