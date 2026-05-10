@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 const FR24_TOKEN = process.env.FR24_TOKEN || '019e12c9-e17d-7349-a70a-14ab2cc5b57f|kZIaWFPgGERatxPkPsD4xAyn1tNdvGQ4XJRhzdr69a8679e9';
 
 app.use(cors());
-app.use(express.static('public')); // положи hurghada-airport.html сюда как index.html
+app.use(express.static(__dirname)); // index.html лежит в корне репозитория
 
 // Прокси: прилёты
 app.get('/api/arrivals', async (req, res) => {
